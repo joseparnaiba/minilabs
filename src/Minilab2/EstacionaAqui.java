@@ -30,17 +30,30 @@ public class EstacionaAqui {
          }
          vagas.get(numeroVaga).mudarStatus();
     }
-    public void  simulaPreco() {
-
+    public int  simulaPreco(int numeroVaga,int qtdHoras) {
+    	 if (numeroVaga < 0 || numeroVaga >= vagas.size()) {
+             throw new IllegalArgumentException("Vaga inexistente.");
+         }
+         return vagas.get(numeroVaga).calculaValor(qtdHoras);
+     }
+    public String[] listarVagas() {
+        String[] resultado = new String[vagas.size()];
+        for (int i = 0; i < vagas.size(); i++) {
+            resultado[i] = vagas.get(i).toString();
+        }
+        return resultado;
     }
-    //public String listarVagas() {
-
-    //}
-    //public comentar() {
-
-    //}
-    //public  listarComentarios() {
-
-    //}
+    
+    public void comentar(String texto, String autor) {
+        if (comentarios.size() == MAX_COMENTARIOS) {
+            comentarios.remove(0);
+        }
+        comentarios.add(new Comentario(texto, autor));
+    }
+    
+    public String[] listarComentarios() {
+        return comentarios.stream().map(Comentario::toString).toArray(String[]::new);
+    }
+}
 
 }
