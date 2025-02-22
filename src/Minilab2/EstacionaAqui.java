@@ -45,15 +45,18 @@ public class EstacionaAqui {
     }
     
     public void comentar(String texto, String autor) {
-        if (comentarios.size() == MAX_COMENTARIOS) {
+        if (comentarios.size() == capacdadeMaxComentario) {
             comentarios.remove(0);
         }
         comentarios.add(new Comentario(texto, autor));
     }
     
     public String[] listarComentarios() {
-        return comentarios.stream().map(Comentario::toString).toArray(String[]::new);
-    }
-}
+    	String[] resultado = new String[comentarios.size()];
+    	for (int i = 0; i < comentarios.size(); i++) {
+    	    resultado[i] = comentarios.get(i).toString();
+    	}
+    	return resultado;
 
+    }
 }
