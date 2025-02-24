@@ -11,6 +11,7 @@ public class EstacionaAqui {
 
     public EstacionaAqui() {
         vagas = new ArrayList<>();
+        comentarios = new ArrayList<>();
     }
     public int adicionaVaga(String end,String linkmp,double ar) {
         if(vagas.size() >= capacidadeMaxima){
