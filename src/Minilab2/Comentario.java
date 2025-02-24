@@ -11,6 +11,6 @@ public class Comentario {
 	    
 	    @Override
 	    public String toString() {
-	        return autor + ": " + texto;
+	        return texto + ": " + autor;
 	    }
 }

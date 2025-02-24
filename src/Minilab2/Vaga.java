@@ -1,5 +1,7 @@
 package Minilab2;
 
+import java.util.Objects;
+
 public class Vaga {
     private String endereco;
     private int num;
@@ -26,7 +28,20 @@ public class Vaga {
     public int getNumero() { 
     	return num; 
     	}
-    public boolean isLivre() {
+    @Override
+	public int hashCode() {
+		return Objects.hash(area, num);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null|| (getClass() != obj.getClass()))
+			return false;
+		Vaga other = (Vaga) obj;
+		return Double.doubleToLongBits(area) == Double.doubleToLongBits(other.area) && num == other.num;
+	}
+	public boolean isLivre() {
     	return livre; 
     	}
     public void mudarStatus() {
